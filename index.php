@@ -39,6 +39,18 @@ function is_favourite($id) {
       button.favorite-button:hover, button.unfavorite-button:hover {
         background: #000099;
       }
+      button.favorite-button {
+        display: inline;
+      }
+      .favourite button.favorite-button {
+        display: none;
+      }
+      button.unfavorite-button {
+        display: none;
+      }
+      .favourite button.unfavorite-button {
+        display: inline;
+      }
       .favourite-heart {
         font: 2em;
         color: red;
@@ -81,13 +93,13 @@ function is_favourite($id) {
       function favorite() {
         var parent = this.parentElement;
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'favourite.php', true);
+        xhr.open('POST', 'like.php', true);
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
         xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
         xhr.onreadystatechange = function () {
           if(xhr.readyState == 4 && xhr.status == 200) {
             var result = xhr.responseText;
-            console.log('Result: ' + result);
+            //console.log('Result: ' + result);
             if(result == 'true') {
               parent.classList.add('favourite');
             }
@@ -110,7 +122,7 @@ function is_favourite($id) {
         xhr.onreadystatechange = function () {
           if(xhr.readyState == 4 && xhr.status == 200) {
             var result = xhr.responseText;
-            console.log('Result: ' + result);
+            //console.log('Result: ' + result);
             if(result == 'true') {
               parent.classList.remove('favourite');
             }

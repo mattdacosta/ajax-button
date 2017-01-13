@@ -1,4 +1,6 @@
 <?php
+//simulate a slow server
+  sleep(2);
 
   session_start();
 
